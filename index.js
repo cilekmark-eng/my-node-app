@@ -13,7 +13,7 @@ class AppServer extends EventEmitter {
             this.emit('request:received', { url: req.url, method: req.method });
 
             res.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8' });
-            res.end('Привет, мир!');
+            res.end('Привет,я Марк!');
         });
 
         this.server.listen(port, () => {
