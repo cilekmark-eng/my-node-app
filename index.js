@@ -1,28 +1,49 @@
 const http = require('http');
+const { EventEmitter } = require('events');
+const logger = require('./logger');
 
-//ПИ
-function calculatePi(iterations) {
-    let pi = 0;
-    let sign = 1;
-    for (let i = 0; i < iterations; i++) {
-        pi += sign / (2 * i + 1);
-        sign *= -1;
+class AppServer extends EventEmitter {
+    constructor() {
+        super();
+        this.server = null;
     }
-    return pi * 4;
+
+    start(port) {
+        this.server = http.createServer((req, res) => {
+            this.emit('request:received', { url: req.url, method: req.method });
+
+            res.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8' });
+            res.end('Привет, мир!');
+        });
+
+        this.server.listen(port, () => {
+            this.emit('server:started', port);
+        });
+    }
+
+    stop() {
+        if (this.server) {
+            this.server.close(() => {
+                this.emit('server:stopped');
+            });
+        }
+    }
 }
-const piValue = calculatePi(1000000); 
-const piFormatted = piValue.toFixed(21);
 
-const server = http.createServer((req, res) => {
-    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
-    res.write('<h1>Информация о студенте</h1>');
-    res.write('<p><strong>ФИО:</strong> [Чилек Марк Геннадьевич]</p>');
-    res.write('<p><strong>Группа:</strong> [478]</p>');
-    res.write(`<p><strong>Число Пи (до ${21} знака):</strong> ${piFormatted}</p>`);
-    res.end();
+const app = new AppServer();
+
+logger.setupLogger(app);
+
+app.on('server:started', (port) => {
+    console.log(`Сервер запущен тута <${port}>`);
 });
 
-const PORT = 3000;
-server.listen(PORT, () => {
-    console.log(`Сервер запущен на http://localhost:${PORT}`);
+app.on('request:received', (data) => {
+    console.log(`Получен запрос: <${data.method}> <${data.url}>`);
 });
+
+app.on('server:stopped', () => {
+    console.log('Сервер остановлен');
+});
+
+app.start(3000);
