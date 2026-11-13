@@ -1,0 +1,95 @@
+{
+  "директория": "D:\\my-node-app",
+  "вариант": 21,
+  "дата_анализа": "2026-11-13 00:12:30",
+  "максимальный_размер_файла_байт": 10485760,
+  "папок": 112,
+  "файлов": 136,
+  "общий_размер_байт": 88274,
+  "расширения": {
+    "(без расширения)": {
+      "файлов": 104,
+      "размер_байт": 44481
+    },
+    ".sample": {
+      "файлов": 14,
+      "размер_байт": 26788
+    },
+    ".js": {
+      "файлов": 5,
+      "размер_байт": 15257
+    },
+    ".txt": {
+      "файлов": 12,
+      "размер_байт": 1488
+    },
+    ".json": {
+      "файлов": 1,
+      "размер_байт": 260
+    }
+  },
+  "топ_5_больших": [
+    {
+      "name": "task3.js",
+      "path": "task3.js",
+      "size": 5708,
+      "ext": ".js"
+    },
+    {
+      "name": "task2.js",
+      "path": "task2.js",
+      "size": 5060,
+      "ext": ".js"
+    },
+    {
+      "name": "HEAD",
+      "path": ".git\\logs\\HEAD",
+      "size": 5006,
+      "ext": ""
+    },
+    {
+      "name": "pre-rebase.sample",
+      "path": ".git\\hooks\\pre-rebase.sample",
+      "size": 4898,
+      "ext": ".sample"
+    },
+    {
+      "name": "fsmonitor-watchman.sample",
+      "path": ".git\\hooks\\fsmonitor-watchman.sample",
+      "size": 4611,
+      "ext": ".sample"
+    }
+  ],
+  "топ_5_маленьких": [
+    {
+      "name": "COMMIT_EDITMSG",
+      "path": ".git\\COMMIT_EDITMSG",
+      "size": 7,
+      "ext": ""
+    },
+    {
+      "name": ".gitignore",
+      "path": ".gitignore",
+      "size": 30,
+      "ext": ""
+    },
+    {
+      "name": "HEAD",
+      "path": ".git\\HEAD",
+      "size": 36,
+      "ext": ""
+    },
+    {
+      "name": "6c6d6030a10520a391d8184d299c8f35b58602",
+      "path": ".git\\objects\\e9\\6c6d6030a10520a391d8184d299c8f35b58602",
+      "size": 39,
+      "ext": ""
+    },
+    {
+      "name": "ORIG_HEAD",
+      "path": ".git\\ORIG_HEAD",
+      "size": 41,
+      "ext": ""
+    }
+  ]
+}
